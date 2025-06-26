@@ -1,0 +1,55 @@
+{% extends "airquality/base.html" %}
+
+{% block extra_css %}
+<style>
+    .hero-section {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1584267385494-9fdd9a71ad75');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 100px 0;
+        text-align: center;
+    }
+    .feature-card {
+        transition: transform 0.3s;
+    }
+    .feature-card:hover {
+        transform: translateY(-10px);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <h1 class="display-4">Air Quality Monitoring System</h1>
+    <p class="lead">Using satellite data and AI to track air pollution across India</p>
+    <a href="{% url 'dashboard' %}" class="btn btn-primary btn-lg mt-3">View Interactive Dashboard</a>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-4 mb-4">
+        <div class="card feature-card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Satellite Data</h5>
+                <p class="card-text">Utilizing INSAT-3D/3DR/3DS satellite observations for Aerosol Optical Depth measurements.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card feature-card h-100">
+            <div class="card-body">
+                <h5 class="card-title">AI/ML Analysis</h5>
+                <p class="card-text">Advanced machine learning models to estimate PM2.5 concentrations with high accuracy.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card feature-card h-100">
+            <div class="card-body">
+                <h5 class="card-title">3D Visualization</h5>
+                <p class="card-text">Interactive 3D maps to explore air quality data in an immersive environment.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
