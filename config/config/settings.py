@@ -125,7 +125,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # MongoDB Configuration
-MONGO_URI = "mongodb+srv://ayush:ayush123@cluster.mongodb.net/air_quality_db?retryWrites=true&w=majority"
+MONGO_URI = 'mongodb://ayush:ayush123@cluster0-shard-00-00.xxxxx.mongodb.net:27017,cluster0-shard-00-01.xxxxx.mongodb.net:27017,cluster0-shard-00-02.xxxxx.mongodb.net:27017/air_quality_db?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority'
 MONGO_DB_NAME = 'air_quality_db'
 
 # ML Model Path
