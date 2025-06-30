@@ -133,3 +133,5 @@ MONGO_DB_NAME = 'airquality'
 
 # ML Model Path
 ML_MODEL_PATH = os.path.join(BASE_DIR, 'airquality/ml_model/model.pkl')
+# Reduce memory usage
+SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
