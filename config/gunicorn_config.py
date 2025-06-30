@@ -1,14 +1,8 @@
-# gunicorn_config.py
-import multiprocessing
-
-# Bind to Render's internal port (10000)
+# Render-specific settings
 bind = "0.0.0.0:10000"
-
-# Worker settings (optimized for Render free tier)
-workers = 1                   # Reduce workers to avoid OOM errors
-threads = 2                   # Use threads for concurrency
-timeout = 120                  # Kill workers after 30s of inactivity
-keepalive = 5                 # Keep-alive connections
-max_requests = 500            
-max_requests_jitter = 50      
-preload_app = True            
+workers = 1  # Only 1 worker for free tier
+threads = 2  # Lightweight concurrency
+timeout = 30
+keepalive = 5
+max_requests = 100  # Restart workers frequently
+preload_app = True  # Critical for memory

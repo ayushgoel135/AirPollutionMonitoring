@@ -9,8 +9,9 @@ from config.settings import MONGO_URI, MONGO_DB_NAME
 def load_sample_data():
     client = MongoClient(MONGO_URI,
                          tls=True,
-                         tlsCAFile=certifi.where(),  # Use system CA certificates
+                         tlsCAFile='/etc/ssl/certs/ca-certificates.crt',  # Use system CA certificates
                          connectTimeoutMS=30000,
+                         serverSelectionTimeoutMS=5000,
                          socketTimeoutMS=30000)
     db = client[MONGO_DB_NAME]
     
