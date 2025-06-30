@@ -7,7 +7,7 @@ Django==5.2.3
 dnspython==2.7.0
 dotenv==0.9.9
 fonttools==4.58.4
-gunicorn==23.0.0
+gunicorn==21.2.0
 idna==3.10
 joblib==1.5.1
 kiwisolver==1.4.8
