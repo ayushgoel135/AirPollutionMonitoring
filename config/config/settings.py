@@ -128,9 +128,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # MongoDB Configuration
-MONGO_URI = os.getenv('MONGO_URI', 'mongodb+srv://ayush:ayush123@cluster0.by8tbqx.mongodb.net/')
+MONGO_URI = os.getenv('MONGO_URI', 'mongodb+srv://ayush:ayush123@cluster0.by8tbqx.mongodb.net/airquality?retryWrites=true&w=majority&tls=true&tlsAllowInvalidCertificates=true')
 MONGO_DB_NAME = 'airquality'
-
 # ML Model Path
 ML_MODEL_PATH = os.path.join(BASE_DIR, 'airquality/ml_model/model.pkl')
 # Reduce memory usage

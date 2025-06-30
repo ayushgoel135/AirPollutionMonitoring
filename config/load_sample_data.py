@@ -3,10 +3,15 @@ import json
 import random
 from datetime import datetime, timedelta
 from pymongo import MongoClient
+import certifi
 from config.settings import MONGO_URI, MONGO_DB_NAME
 
 def load_sample_data():
-    client = MongoClient(MONGO_URI)
+    client = MongoClient(MONGO_URI,
+                         tls=True,
+                         tlsCAFile=certifi.where(),  # Use system CA certificates
+                         connectTimeoutMS=30000,
+                         socketTimeoutMS=30000)
     db = client[MONGO_DB_NAME]
     
     # Clear existing data
