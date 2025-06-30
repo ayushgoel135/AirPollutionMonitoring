@@ -1,5 +1,8 @@
+from venv import logger
 from django.db import models
 from pymongo import MongoClient
+import pymongo.errors
+import logging
 from config.settings import MONGO_URI, MONGO_DB_NAME
 import json
 
@@ -56,7 +59,14 @@ class Prediction:
         return list(collection.find({}))
     
     @staticmethod
-    def get_latest_predictions(limit=100):
-        mongo = MongoDBConnection()
-        collection = mongo.get_collection('predictions')
-        return list(collection.find({}).sort('timestamp', -1).limit(limit))
+    def get_latest_predictions(limit=10):
+        try:
+            mongo = MongoDBConnection()
+            collection = mongo.get_collection('predictions')
+            return list(collection.find({})
+                .sort('timestamp', -1)
+                .limit(limit)
+                .max_time_ms(2000))  # Add timeout
+        except pymongo.errors.PyMongoError as e:
+            logger.error(f"MongoDB error: {e}")
+        return [] 
